@@ -27,9 +27,9 @@
 
 @property (nonatomic, strong)UIColor *normalTitleColor;//未选中的标题颜色
 
-@property (nonatomic, strong)UIColor *selectedBtnBackgroundColor;
+@property (nonatomic, strong)UIColor *selectedBtnBackgroundColor;//选中按钮背景颜色
 
-@property (nonatomic, strong)UIColor *normalBtnBackgroundColor;
+@property (nonatomic, strong)UIColor *normalBtnBackgroundColor;//未选中按钮背景颜色
 
 @end
 
@@ -80,7 +80,7 @@
                 action:@selector(btnClicked:)
       forControlEvents:UIControlEventTouchUpInside];
         
-        btn.tag = index + 10;
+        btn.tag = index + 660;
         [self addSubview:btn];
         if (index == 0) {
             btn.selected = YES;
@@ -116,9 +116,6 @@
  *  判段是否是第一个button 如果是第一个那么其左边是和 self 的左边相等的 如果不是第一个那么其左边是和上一个 button 的右边相等的(也可以有间距 根据需求)
  button的宽度是根据 self 的宽 除以数组的长度 这样就等分
  *
- *  @param index <#index description#>
- *
- *  @return <#return value description#>
  */
 
 - (BOOL)isFirstByIndex:(NSInteger)index{
@@ -131,12 +128,9 @@
 /**
  *  取出前一个btn
  *
- *  @param index <#index description#>
- *
- *  @return <#return value description#>
  */
 - (UIButton *)returnOneBtn:(NSInteger)index{
-    NSInteger last = index + 10 - 1;
+    NSInteger last = index + 660 - 1;
     UIButton *btn = [self viewWithTag:last];
     return btn;
 }
@@ -144,7 +138,7 @@
 - (NSArray *)tagsArray{
     NSMutableArray *muA = [NSMutableArray arrayWithCapacity:_titlesArray.count];
     for (NSInteger index = 0; index < _titlesArray.count; index ++) {
-        NSInteger tag = index + 10;
+        NSInteger tag = index + 660;
         [muA addObject:@(tag)];
     }
     return muA.copy;
@@ -161,18 +155,18 @@
         }
     }
     if (_delegate && [_delegate respondsToSelector:@selector(didSelectSegmentWithIndex:)]) {
-        [_delegate didSelectSegmentWithIndex:tag - 10];
+        [_delegate didSelectSegmentWithIndex:tag - 660];
     }
 }
 
 
 - (void)updateSelectedIndexToFirst{
-    UIButton *btn = [self viewWithTag:10];
+    UIButton *btn = [self viewWithTag:660];
     [self btnClicked:btn];
 }
 
 - (void)updateSelectedWithIndex:(NSInteger)index{
-    UIButton *btn = [self viewWithTag:index + 10];
+    UIButton *btn = [self viewWithTag:index + 660];
     [self btnClicked:btn];
 }
 
