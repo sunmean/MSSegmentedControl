@@ -3,7 +3,7 @@
 //  EShareMall
 //
 //  Created by SongMin on 2019/11/20.
-//  Copyright © 2019 Riven. All rights reserved.
+//  Copyright © 2019 lovsoft. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
